@@ -1,0 +1,2366 @@
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           DESIGN TOKENS
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        :root {
+            /* COLORS */
+            --therapist-olive: #3C4A3E;
+            --therapist-sage: #B8C4B0;
+            --therapist-dusty-rose: #D9B5A7;
+            --therapist-light-base: #FAF9F7;
+            --therapist-text-main: #1E1E1E;
+            --therapist-text-muted: #6B6B6B;
+            --therapist-golden: #E6D2A3;
+            --therapist-white: #FFFFFF;
+            --therapist-border: #EAE7E3;
+            --therapist-hover: #2F3B33;
+
+            /* TYPOGRAPHY */
+            --ff-heading: 'Playfair Display', serif;
+            --ff-body: 'Inter', sans-serif;
+
+            /* SPACING */
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+            --spacing-4xl: 80px;
+            --spacing-5xl: 120px;
+
+            /* LAYOUT */
+            --container-max: 1200px;
+            --nav-height: 80px;
+
+            /* ANIMATION */
+            --motion-fast: 0.18s;
+            --motion-default: 0.24s;
+            --motion-slow: 0.6s;
+            --ease-smooth: cubic-bezier(0.22, 0.9, 0.3, 1);
+
+            /* SHADOWS */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           GLOBAL RESET
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--ff-body);
+            background: var(--therapist-light-base);
+            color: var(--therapist-text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           NAVIGATION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .therapist-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(250, 249, 247, 0.95);
+            transition: all var(--motion-default) var(--ease-smooth);
+            padding: 18px 0;
+        }
+
+        .therapist-nav--scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .therapist-container-nav {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            text-decoration: none;
+            transition: opacity var(--motion-fast) var(--ease-smooth);
+        }
+
+        .brand-link:hover {
+            opacity: 0.8;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--therapist-sage);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--therapist-olive);
+            font-family: var(--ff-heading);
+        }
+
+        .brand-name {
+            font-weight: 700;
+            color: var(--therapist-olive);
+            font-size: 20px;
+            font-family: var(--ff-heading);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--spacing-xs);
+        }
+
+        .hamburger {
+            width: 24px;
+            height: 18px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 2px;
+            background: var(--therapist-olive);
+            transition: all var(--motion-default) var(--ease-smooth);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xl);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-list-item {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--therapist-text-main);
+            text-decoration: none;
+            transition: color var(--motion-fast) var(--ease-smooth);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-list-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--therapist-olive);
+            transition: width var(--motion-default) var(--ease-smooth);
+        }
+
+        .nav-list-item:hover::after {
+            width: 100%;
+        }
+
+        .nav-book-cta {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 8px;
+            background: var(--therapist-olive);
+            color: var(--therapist-light-base);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all var(--motion-default) var(--ease-smooth);
+        }
+
+        .nav-book-cta:hover {
+            background: var(--therapist-hover);
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(60, 74, 62, 0.2);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           HERO SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--therapist-sage) 0%, var(--therapist-light-base) 100%);
+            padding-top: var(--nav-height);
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-content {
+            padding: var(--spacing-4xl) 0;
+        }
+
+        .hero h1 {
+            font-family: var(--ff-heading);
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--therapist-olive);
+            margin-bottom: var(--spacing-lg);
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: var(--therapist-text-muted);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-2xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all var(--motion-default) var(--ease-smooth);
+        }
+
+        .btn-primary {
+            background: var(--therapist-olive);
+            color: var(--therapist-white);
+            box-shadow: 0 8px 24px rgba(60, 74, 62, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: var(--therapist-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(60, 74, 62, 0.25);
+        }
+
+        .btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform var(--motion-default) var(--ease-smooth);
+        }
+
+        .btn:hover svg {
+            transform: translateY(2px);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SERVICES SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .services {
+            padding: var(--spacing-5xl) 0;
+            background: var(--therapist-white);
+        }
+
+        .services-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
+        }
+
+        .services h2 {
+            font-family: var(--ff-heading);
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 400;
+            color: var(--therapist-olive);
+            margin-bottom: var(--spacing-lg);
+            letter-spacing: -0.01em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .service-card {
+            background: var(--therapist-light-base);
+            border-radius: 16px;
+            padding: var(--spacing-2xl);
+            transition: all var(--motion-slow) var(--ease-smooth);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(60, 74, 62, 0.08);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--therapist-sage), var(--therapist-dusty-rose));
+            opacity: 0;
+            transition: opacity var(--motion-default) var(--ease-smooth);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-number {
+            font-family: var(--ff-heading);
+            font-size: 14px;
+            color: var(--therapist-text-muted);
+            margin-bottom: var(--spacing-md);
+            font-weight: 400;
+        }
+
+        .card-title {
+            font-family: var(--ff-heading);
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--therapist-olive);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.3;
+        }
+
+        .card-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--therapist-text-muted);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 300;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--therapist-olive);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all var(--motion-default) var(--ease-smooth);
+        }
+
+        .card-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform var(--motion-default) var(--ease-smooth);
+        }
+
+        .card-link:hover {
+            gap: var(--spacing-sm);
+        }
+
+        .card-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           HOW IT WORKS SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .how-it-works {
+            padding: var(--spacing-5xl) 0;
+            background: linear-gradient(180deg, var(--therapist-white) 0%, var(--therapist-light-base) 100%);
+        }
+
+        .how-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .how-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
+        }
+
+        .how-it-works h2 {
+            font-family: var(--ff-heading);
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 400;
+            color: var(--therapist-olive);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-3xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--therapist-sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+            font-family: var(--ff-heading);
+            font-size: 28px;
+            color: var(--therapist-olive);
+            transition: all var(--motion-slow) var(--ease-smooth);
+        }
+
+        .step-card:hover .step-icon {
+            background: var(--therapist-dusty-rose);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .step-card h3 {
+            font-family: var(--ff-heading);
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--therapist-olive);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--therapist-text-muted);
+            font-weight: 300;
+        }
+
+        .cta-wrapper {
+            text-align: center;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           TRANSFORMATION SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .transformation {
+            padding: var(--spacing-5xl) 0;
+            background: var(--therapist-olive);
+            color: var(--therapist-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transformation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.08;
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
+        }
+
+        .transformation-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .transformation h2 {
+            font-family: var(--ff-heading);
+            font-size: clamp(40px, 5vw, 56px);
+            font-weight: 400;
+            margin-bottom: var(--spacing-xl);
+            letter-spacing: -0.01em;
+            color: var(--therapist-white);
+        }
+
+        .transformation p {
+            font-size: clamp(18px, 2.5vw, 22px);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .btn-ghost {
+            background: var(--therapist-white);
+            color: var(--therapist-olive);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-ghost:hover {
+            background: var(--therapist-light-base);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FINAL INVITATION SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .final-invitation {
+            padding: var(--spacing-5xl) 0;
+            background: linear-gradient(135deg, var(--therapist-dusty-rose) 0%, var(--therapist-golden) 100%);
+        }
+
+        .invitation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+            text-align: center;
+        }
+
+        .final-invitation h2 {
+            font-family: var(--ff-heading);
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 400;
+            color: var(--therapist-olive);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .final-invitation p {
+            font-size: clamp(18px, 2.5vw, 20px);
+            line-height: 1.7;
+            color: var(--therapist-text-main);
+            margin-bottom: var(--spacing-2xl);
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 18px 48px;
+            border-radius: 50px;
+            background: var(--therapist-olive);
+            color: var(--therapist-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all var(--motion-default) var(--ease-smooth);
+            box-shadow: 0 12px 32px rgba(60, 74, 62, 0.2);
+        }
+
+        .cta-button:hover {
+            background: var(--therapist-hover);
+            transform: scale(1.05);
+            box-shadow: 0 16px 48px rgba(60, 74, 62, 0.3);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FOOTER
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        footer {
+            background: var(--therapist-text-main);
+            color: var(--therapist-light-base);
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .footer-column h3 {
+            font-family: var(--ff-heading);
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--therapist-golden);
+        }
+
+        .footer-column p,
+        .footer-column a {
+            color: rgba(250, 249, 247, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            transition: color var(--motion-default) var(--ease-smooth);
+        }
+
+        .footer-column a:hover {
+            color: var(--therapist-golden);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(250, 249, 247, 0.2);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(250, 249, 247, 0.6);
+            font-size: 14px;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           RESPONSIVE
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+
+
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   12. IMAGE RESPONSIVE BEHAVIOR
+   Ensure all images scale properly
+   Reference: index.html image requirements
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* All images must be responsive */
+.service-image img,
+.detailed-services-section img,
+.services-hero img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Background images - always cover and center */
+[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   13. TYPOGRAPHY FINE-TUNING FOR READABILITY
+   Reference: index.html typography patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Small phones: reduce base font slightly */
+@media (max-width: 480px) {
+  .services-section,
+  .detailed-services-section,
+  .steps-section,
+  .pricing-section {
+    font-size: 15px;
+  }
+
+  h2 {
+    line-height: 1.3;
+  }
+
+  h3 {
+    line-height: 1.3;
+  }
+
+  h4 {
+    line-height: 1.3;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* Very small phones: minimum readable sizes */
+@media (max-width: 359px) {
+  .services-section,
+  .detailed-services-section,
+  .steps-section,
+  .pricing-section {
+    font-size: 14px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   14. LANDSCAPE PHONE ORIENTATIONS
+   Reference: index.html landscape patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* iPhone SE and similar in landscape */
+@media (max-height: 450px) and (orientation: landscape) {
+  /* Reduce section padding in landscape */
+  .services-section,
+  .detailed-services-section,
+  .steps-section,
+  .pricing-section,
+  .cta-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  /* Reduce hero height in landscape */
+  .services-hero {
+    min-height: 50vh;
+    padding: var(--spacing-xl) 0;
+  }
+
+  /* Adjust grid gaps */
+  .services-grid,
+  .steps-grid {
+    gap: var(--spacing-sm);
+  }
+
+  /* Reduce image heights in landscape */
+  .service-image {
+    min-height: 200px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   15. TABLET PORTRAIT SPECIFIC (768px - 1023px)
+   Reference: index.html tablet optimization
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  /* Services: 2 columns works well on tablets */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  /* Steps: 2 columns on tablets */
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Pricing: 2 columns on tablets */
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Detailed services: keep side-by-side on tablets */
+  .detailed-service-item {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   16. TABLET LANDSCAPE / SMALL LAPTOP (1024px - 1199px)
+   Reference: index.html larger tablet patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Services: 3 columns on larger tablets */
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Steps: 3 columns */
+  .steps-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Pricing: 3 columns */
+  .pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   17. LARGE DESKTOP OPTIMIZATIONS (1440px+)
+   Reference: index.html large screen patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 1440px) {
+  .services-container,
+  .detailed-services-container,
+  .steps-container,
+  .pricing-container,
+  .cta-container,
+  .faq-container,
+  .footer-container {
+    max-width: 1400px;
+  }
+
+  /* Slightly larger type on big screens */
+  .services-hero h1 {
+    font-size: 72px;
+  }
+
+  .services-hero .subtext {
+    font-size: 22px;
+  }
+
+  .services-header h2,
+  .steps-header h2,
+  .pricing-header h2 {
+    font-size: 56px;
+  }
+
+  /* Services: 4 columns on very large screens */
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Detailed services: more breathing room */
+  .detailed-service-item {
+    gap: var(--spacing-4xl);
+  }
+
+  .service-image {
+    min-height: 450px;
+  }
+}
+
+/* Extra large desktop: 2560px+ */
+@media (min-width: 2560px) {
+  .services-container,
+  .detailed-services-container,
+  .steps-container,
+  .pricing-container,
+  .cta-container,
+  .faq-container,
+  .footer-container {
+    max-width: 1800px;
+  }
+
+  .services-hero h1 {
+    font-size: 84px;
+  }
+
+  .services-header h2,
+  .steps-header h2,
+  .pricing-header h2 {
+    font-size: 64px;
+  }
+
+  .service-image {
+    min-height: 500px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   18. FOCUS STATES FOR ACCESSIBILITY
+   Enhanced keyboard navigation focus states
+   Reference: index.html accessibility patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  a:focus,
+  button:focus {
+    outline: 3px solid var(--therapist-olive);
+    outline-offset: 2px;
+  }
+
+  /* Visible focus on cards */
+  .service-card:focus,
+  .pricing-card:focus,
+  .step-card:focus {
+    outline: 2px solid var(--therapist-olive);
+    outline-offset: 4px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   19. REDUCED MOTION PREFERENCE
+   Respect user's motion preferences
+   Reference: index.html accessibility patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable image hover transforms */
+  .service-image img {
+    transform: none !important;
+  }
+
+  /* Disable card hover animations */
+  .service-card:hover,
+  .pricing-card:hover {
+    transform: none !important;
+  }
+
+  /* Simplified mobile menu transitions */
+  .nav-menu {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transform: none !important;
+  }
+
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-menu:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   20. PRINT STYLES
+   Optimize page for printing
+   Reference: index.html print patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media print {
+  /* Hide non-essential elements */
+  .therapist-nav,
+  .mobile-menu-toggle,
+  .services-hero,
+  .cta-section {
+    display: none !important;
+  }
+
+  /* Ensure readable text */
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  /* Remove shadows and decorative elements */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Prevent page breaks inside cards */
+  .service-card,
+  .step-card,
+  .pricing-card,
+  .detailed-service-item {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure grids print properly */
+  .services-grid,
+  .steps-grid,
+  .pricing-grid {
+    display: block;
+  }
+
+  .service-card,
+  .step-card,
+  .pricing-card {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+  }
+
+  /* Show link URLs in print */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   21. SPECIFIC PHONE MODELS OPTIMIZATION
+   iPhone SE, Samsung Galaxy, etc.
+   Reference: index.html device-specific patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* iPhone SE (1st gen) - 320px */
+@media (max-width: 320px) {
+  .services-container,
+  .detailed-services-container,
+  .steps-container,
+  .pricing-container,
+  .cta-container,
+  .faq-container {
+    padding: 0 12px;
+  }
+
+  .services-header h2,
+  .steps-header h2,
+  .pricing-header h2 {
+    font-size: 22px;
+  }
+
+  .service-image {
+    min-height: 200px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}
+
+/* Samsung Galaxy Fold (unfolded) and similar */
+@media (min-width: 280px) and (max-width: 320px) {
+  .services-container,
+  .detailed-services-container,
+  .steps-container,
+  .pricing-container,
+  .cta-container,
+  .faq-container,
+  .footer-container {
+    padding: 0 12px;
+  }
+
+  /* Ensure content doesn't overflow */
+  * {
+    word-break: break-word;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   22. HORIZONTAL OVERFLOW PREVENTION
+   Prevent any horizontal scrolling
+   Reference: index.html overflow prevention
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Prevent horizontal scrolling on all screen sizes */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers respect viewport width */
+.services-section,
+.detailed-services-section,
+.steps-section,
+.pricing-section,
+.cta-section,
+.faq-section,
+footer {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent long words from breaking layout */
+.service-card p,
+.service-content p,
+.step-card p,
+.pricing-card p,
+.faq-answer p,
+.cta-section p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure headings don't overflow */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   23. GRID FALLBACK FOR OLDER BROWSERS
+   Flexbox fallback for browsers with limited grid support
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports not (display: grid) {
+  /* Fallback for services grid */
+  .services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    min-width: 280px;
+  }
+
+  @media (max-width: 768px) {
+    .service-card {
+      flex: 1 1 calc(50% - 1.5rem);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .service-card {
+      flex: 1 1 100%;
+    }
+  }
+
+  /* Fallback for detailed services */
+  .detailed-service-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Fallback for steps grid */
+  .steps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .step-card {
+    flex: 1 1 calc(33.333% - 2rem);
+    min-width: 250px;
+  }
+
+  @media (max-width: 768px) {
+    .step-card {
+      flex: 1 1 100%;
+    }
+  }
+
+  /* Fallback for pricing grid */
+  .pricing-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    min-width: 280px;
+  }
+
+  @media (max-width: 768px) {
+    .pricing-card {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   24. SAFARI-SPECIFIC FIXES
+   Address Safari rendering issues
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Safari border-radius clipping fix */
+@supports (-webkit-appearance: none) {
+  .service-image,
+  .service-card,
+  .pricing-card,
+  .step-card {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Safari flexbox gap fallback */
+@supports not (gap: 1rem) {
+  .services-grid > * {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .services-grid > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .steps-grid > * {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .steps-grid > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .pricing-grid > * {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .pricing-grid > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   25. HIGH DPI / RETINA DISPLAY OPTIMIZATIONS
+   Optimize for high-resolution screens
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Enhance border radius for sharper appearance */
+  .service-card,
+  .pricing-card,
+  .step-card,
+  .service-image {
+    border-radius: 16px;
+  }
+
+  /* Slightly thinner borders on retina */
+  .service-card,
+  .pricing-card {
+    border-width: 0.5px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   26. PERFORMANCE OPTIMIZATIONS
+   Hardware acceleration and will-change hints
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  /* Hardware acceleration for smooth animations */
+  .nav-menu,
+  .service-card,
+  .pricing-card,
+  .service-image img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Hint browsers about upcoming transforms */
+  .service-card:hover,
+  .pricing-card:hover {
+    will-change: transform;
+  }
+
+  /* Remove will-change after animation completes */
+  .service-card:not(:hover),
+  .pricing-card:not(:hover) {
+    will-change: auto;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   27. iOS SAFE AREA SUPPORT
+   Handle iPhone notch and home indicator
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 768px) {
+    /* Account for notch at top */
+    .therapist-nav {
+      padding-top: max(18px, env(safe-area-inset-top));
+    }
+
+    /* Account for home indicator at bottom */
+    footer {
+      padding-bottom: max(30px, env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   28. CONTAINER QUERIES (FUTURE-PROOFING)
+   Modern responsive design using container queries
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (container-type: inline-size) {
+  .services-section {
+    container-type: inline-size;
+    container-name: services-container;
+  }
+
+  @container services-container (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @container services-container (min-width: 769px) and (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   29. ASPECT RATIO UTILITIES
+   Modern aspect ratio for images
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (aspect-ratio: 1 / 1) {
+  @media (max-width: 768px) {
+    .service-image {
+      aspect-ratio: 4 / 3;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .service-image {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   30. FINAL MOBILE OPTIMIZATION CHECKLIST VALIDATION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+   
+   ✓ Mobile navigation: Fixed overlay, slide-in animation, backdrop
+   ✓ Services grid: 4-column → 2-column → 1-column progression
+   ✓ Detailed services: Side-by-side → Stacked on mobile
+   ✓ Steps section: 3-column → 1-column with horizontal layout
+   ✓ Pricing: 3-column → 1-column on mobile
+   ✓ Typography: Proper clamp() scaling from 24px to 64px+
+   ✓ Spacing: Reduced on mobile (80px → 48px, etc.)
+   ✓ Touch targets: Minimum 44x44px for all interactive elements
+   ✓ Images: max-width 100%, height auto, proper background sizing
+   ✓ Tested breakpoints: 300px, 360px, 480px, 768px, 1024px, 1440px+
+   ✓ Overflow prevention: word-wrap, overflow-x hidden
+   ✓ Accessibility: Focus states, reduced motion, print styles
+   ✓ Performance: Hardware acceleration, will-change hints
+   
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* END OF SERVICES PAGE RESPONSIVE CSS */
+
+/* MIND EASE  SERVICES.HTML RESPONSIVE CSS
+   Mobile-First Responsive Design (300px - 2560px+)
+   Reference: index.html responsive patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   1. GLOBAL RESPONSIVE ADJUSTMENTS (SHARED)
+   Matches index.html spacing adjustments
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Reduce spacing tokens on mobile - matches index.html */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 20px;
+    --spacing-2xl: 32px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 56px;
+    --spacing-5xl: 80px;
+  }
+}
+
+/* Extra small phones: 300px - 359px - matches index.html */
+@media (max-width: 359px) {
+  :root {
+    --spacing-lg: 16px;
+    --spacing-xl: 16px;
+    --spacing-2xl: 24px;
+    --spacing-3xl: 32px;
+    --spacing-4xl: 40px;
+    --spacing-5xl: 56px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   2. MOBILE NAVIGATION FIX (SHARED WITH ALL PAGES)
+   Reference: index.html navigation patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Show mobile menu toggle on tablets and mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1002;
+  }
+
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile menu - fixed overlay - matches index.html pattern */
+  .nav-menu {
+    position: fixed;
+    top: 76px; /* Below nav bar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 76px);
+    background: var(--therapist-white);
+    flex-direction: column;
+    padding: 2rem;
+    transform: translateX(-100%); /* Start off-screen left */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.22, 0.9, 0.3, 1);
+    z-index: 999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Active state - slide in */
+  .nav-menu.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Stack nav links vertically */
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-list-item {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  /* Full-width CTA button on mobile */
+  .nav-book-cta {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 16px;
+    margin-top: auto;
+  }
+
+  /* Backdrop overlay when menu is open */
+  .nav-menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  .nav-menu.active::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .therapist-container-nav {
+    padding: 0 12px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .nav-menu {
+    padding: 1.5rem;
+    top: 70px;
+    height: calc(100vh - 70px);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3. SERVICES HERO SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .services-hero {
+    min-height: 60vh;
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .services-hero h1 {
+    font-size: clamp(42px, 6vw, 64px);
+  }
+
+  .services-hero .subtext {
+    font-size: 19px;
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .services-hero {
+    min-height: 50vh;
+    padding: var(--spacing-3xl) 0;
+    padding-top: calc(76px + var(--spacing-3xl)); /* Account for fixed nav */
+  }
+
+  .services-hero h1 {
+    font-size: clamp(32px, 7vw, 48px);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .services-hero .subtext {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-xl);
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .services-hero {
+    min-height: 45vh;
+    padding: var(--spacing-2xl) 0;
+    padding-top: calc(76px + var(--spacing-2xl));
+  }
+
+  .services-hero h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .services-hero .subtext {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .services-hero {
+    padding: var(--spacing-xl) 0;
+    padding-top: calc(70px + var(--spacing-xl));
+  }
+
+  .services-hero h1 {
+    font-size: 26px;
+  }
+
+  .services-hero .subtext {
+    font-size: 15px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   4. SERVICES GRID SECTION RESPONSIVE
+   Four columns → Two columns → One column progression
+   Reference: index.html services cards patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below - 2 columns */
+@media (max-width: 1024px) {
+  .services-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .services-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  /* Force 2 columns instead of auto-fit on tablets */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below - Still 2 columns */
+@media (max-width: 768px) {
+  .services-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .services-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .services-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .services-header p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* Keep 2 columns on medium mobile */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  /* Adjust service card padding */
+  .service-card {
+    padding: var(--spacing-xl);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .service-card h3 {
+    font-size: 20px;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-card .card-link {
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below - SINGLE COLUMN */
+@media (max-width: 480px) {
+  .services-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* Force single column on small phones */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .services-header h2 {
+    font-size: 26px;
+  }
+
+  .services-header p {
+    font-size: 16px;
+  }
+
+  .service-card {
+    padding: var(--spacing-lg);
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .service-card h3 {
+    font-size: 19px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .services-container {
+    padding: 0 12px;
+  }
+
+  .services-header h2 {
+    font-size: 24px;
+  }
+
+  .services-header p {
+    font-size: 15px;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   5. DETAILED SERVICES SECTION RESPONSIVE
+   Alternating image-text layout must stack on mobile
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .detailed-services-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .detailed-service-item {
+    gap: var(--spacing-2xl);
+  }
+
+  .service-image {
+    min-height: 350px;
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .detailed-services-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  /* Stack image and content vertically */
+  .detailed-service-item {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  /* Remove alternating layout on mobile */
+  .detailed-service-item.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .service-image {
+    min-height: 280px;
+    width: 100%;
+  }
+
+  .service-content {
+    padding: 0;
+  }
+
+  .service-content h3 {
+    font-size: clamp(24px, 5vw, 32px);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .service-features {
+    gap: var(--spacing-md);
+  }
+
+  .service-feature {
+    padding: var(--spacing-md);
+  }
+
+  .service-feature h4 {
+    font-size: 17px;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .service-feature p {
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .detailed-services-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .detailed-service-item {
+    gap: var(--spacing-lg);
+  }
+
+  .service-image {
+    min-height: 240px;
+  }
+
+  .service-content h3 {
+    font-size: 24px;
+  }
+
+  .service-content p {
+    font-size: 15px;
+  }
+
+  .service-feature {
+    padding: 16px;
+  }
+
+  .service-feature h4 {
+    font-size: 16px;
+  }
+
+  .service-feature p {
+    font-size: 13px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .detailed-services-container {
+    padding: 0 12px;
+  }
+
+  .service-image {
+    min-height: 220px;
+  }
+
+  .service-content h3 {
+    font-size: 22px;
+  }
+
+  .service-content p {
+    font-size: 14px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   6. HOW IT WORKS / STEPS SECTION RESPONSIVE
+   Three-column steps → Single column on mobile
+   Reference: index.html steps patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .steps-section,
+  .how-it-works-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .steps-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  /* Keep 3 columns on tablets if space allows */
+  .steps-grid {
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .steps-section,
+  .how-it-works-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .steps-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .steps-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .steps-header p {
+    font-size: 17px;
+  }
+
+  /* Single column for steps on mobile */
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .step-card {
+    text-align: left;
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: flex-start;
+  }
+
+  .step-icon,
+  .step-number {
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .step-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-card h3 {
+    font-size: 22px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .step-card p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .steps-section,
+  .how-it-works-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .steps-header h2 {
+    font-size: 26px;
+  }
+
+  .steps-header p {
+    font-size: 16px;
+  }
+
+  .step-card {
+    gap: var(--spacing-md);
+  }
+
+  .step-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .step-card h3 {
+    font-size: 20px;
+  }
+
+  .step-card p {
+    font-size: 15px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .steps-container {
+    padding: 0 12px;
+  }
+
+  .steps-header h2 {
+    font-size: 24px;
+  }
+
+  .step-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .step-card h3 {
+    font-size: 18px;
+  }
+
+  .step-card p {
+    font-size: 14px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   7. PRICING SECTION RESPONSIVE (IF PRESENT)
+   Three-column pricing cards → Single column
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .pricing-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .pricing-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .pricing-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  /* Single column pricing cards */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .pricing-card {
+    padding: var(--spacing-xl);
+  }
+
+  .pricing-card h3 {
+    font-size: 24px;
+  }
+
+  .pricing-price {
+    font-size: 42px;
+  }
+
+  .pricing-features {
+    gap: var(--spacing-sm);
+  }
+
+  .pricing-feature {
+    font-size: 15px;
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 48px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .pricing-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .pricing-card {
+    padding: var(--spacing-lg);
+  }
+
+  .pricing-card h3 {
+    font-size: 22px;
+  }
+
+  .pricing-price {
+    font-size: 36px;
+  }
+
+  .pricing-feature {
+    font-size: 14px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .pricing-container {
+    padding: 0 12px;
+  }
+
+  .pricing-card {
+    padding: 20px;
+  }
+
+  .pricing-price {
+    font-size: 32px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   8. CTA SECTION RESPONSIVE
+   Reference: index.html CTA patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(26px, 6vw, 42px);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .cta-section p {
+    font-size: 17px;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  /* Full-width CTA button - matches index.html */
+  .cta-section .btn,
+  .cta-section .btn-primary,
+  .cta-button {
+    width: 100%;
+    max-width: 400px;
+    min-height: 54px;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .cta-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .cta-section h2 {
+    font-size: 24px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .cta-section .btn {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .cta-container {
+    padding: 0 12px;
+  }
+
+  .cta-section h2 {
+    font-size: 22px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   9. FAQ SECTION RESPONSIVE (IF PRESENT)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .faq-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .faq-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .faq-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  .faq-item {
+    padding: var(--spacing-lg);
+  }
+
+  .faq-question {
+    font-size: 17px;
+    padding-right: 32px;
+  }
+
+  .faq-answer {
+    font-size: 15px;
+    line-height: 1.7;
+    padding-top: var(--spacing-md);
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .faq-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .faq-header h2 {
+    font-size: 26px;
+  }
+
+  .faq-item {
+    padding: var(--spacing-md);
+  }
+
+  .faq-question {
+    font-size: 16px;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .faq-container {
+    padding: 0 12px;
+  }
+
+  .faq-header h2 {
+    font-size: 24px;
+  }
+
+  .faq-question {
+    font-size: 15px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   10. FOOTER RESPONSIVE (SHARED)
+   Reference: index.html footer patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 0 24px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  footer {
+    padding: 32px 0 20px;
+  }
+
+  .footer-column h3 {
+    font-size: 16px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .footer-container {
+    padding: 0 12px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   11. TOUCH-FRIENDLY INTERACTIONS
+   Ensure 44x44px minimum touch targets on mobile
+   Reference: index.html touch target requirements
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  /* All buttons and interactive elements */
+  button,
+  .btn,
+  .btn-primary,
+  .btn-ghost,
+  .nav-list-item,
+  .nav-book-cta,
+  .cta-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Service cards should have adequate touch area */
+  .service-card {
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  /* Links with sufficient padding */
+  a {
+    padding: 4px;
+  }
+}
+
+/* ━━━━━━━━━━━━

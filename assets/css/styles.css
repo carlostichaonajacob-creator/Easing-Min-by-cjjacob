@@ -1,0 +1,2535 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --therapist-olive: #3C4A3E;
+  --therapist-sage: #B8C4B0;
+  --therapist-dusty-rose: #D9B5A7;
+  --therapist-light-base: #FAF9F7;
+  --therapist-text-main: #1E1E1E;
+  --therapist-text-muted: #6B6B6B;
+  --therapist-golden: #E6D2A3;
+  --therapist-white: #FFFFFF;
+  --therapist-border: #EAE7E3;
+  --therapist-error: #C56C5A;
+  --therapist-hover: #2F3B33;
+  --ff-heading: 'Playfair Display', serif;
+  --ff-body: 'Inter', sans-serif;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+  --spacing-5xl: 120px;
+  --container-max: 1200px;
+  --nav-height: 80px;
+  --motion-fast: 0.18s;
+  --motion-default: 0.24s;
+  --motion-slow: 0.6s;
+  --ease-smooth: cubic-bezier(0.22, 0.9, 0.3, 1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESET
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-body);
+  background: var(--therapist-light-base);
+  color: var(--therapist-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAVIGATION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.therapist-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(250, 249, 247, 0.95);
+  transition: all var(--motion-default) var(--ease-smooth);
+  padding: 18px 0;
+}
+
+.therapist-nav--scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.therapist-container-nav {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 700;
+  color: var(--therapist-olive);
+  text-decoration: none;
+  font-size: 20px;
+  font-family: var(--ff-heading);
+  transition: opacity var(--motion-fast) var(--ease-smooth);
+}
+
+.brand-link:hover {
+  opacity: 0.8;
+}
+
+.brand-logo {
+  height: 40px;
+  width: 40px;
+  background: var(--therapist-sage);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--therapist-olive);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list-item {
+  font-family: var(--ff-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--therapist-text-main);
+  text-decoration: none;
+  transition: color var(--motion-fast) var(--ease-smooth);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-list-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--therapist-olive);
+  transition: width var(--motion-default) var(--ease-smooth);
+}
+
+.nav-list-item:hover::after {
+  width: 100%;
+}
+
+.nav-book-cta {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 8px;
+  background: var(--therapist-olive);
+  color: var(--therapist-light-base);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all var(--motion-default) var(--ease-smooth);
+  white-space: nowrap;
+}
+
+.nav-book-cta:hover {
+  background: var(--therapist-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--therapist-olive);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--therapist-olive);
+  padding-top: var(--nav-height);
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.hero-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(60, 74, 62, 0.85) 0%, rgba(60, 74, 62, 0.6) 100%);
+}
+
+.therapist-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  width: 100%;
+}
+
+.therapist-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-4xl) 0;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-family: var(--ff-heading);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--therapist-light-base);
+  margin: 0 0 20px;
+}
+
+.hero-text .subtext {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--therapist-light-base);
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all var(--motion-default) var(--ease-smooth);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--therapist-golden);
+  color: var(--therapist-olive);
+}
+
+.btn-primary:hover {
+  background: #dcc791;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--therapist-light-base);
+  border: 2px solid var(--therapist-light-base);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.trust-badges {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--therapist-light-base);
+  font-size: 15px;
+}
+
+.trust-badge-icon {
+  width: 24px;
+  height: 24px;
+  background: var(--therapist-golden);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--therapist-olive);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ABOUT
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.about-section {
+  background: var(--therapist-light-base);
+  padding: var(--spacing-5xl) 0;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.about-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-4xl);
+}
+
+.about-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--therapist-olive);
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.about-main-heading {
+  font-family: var(--ff-heading);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-main-subheading {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--therapist-text-muted);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-4xl);
+}
+
+.about-image-large {
+  grid-column: 1 / 8;
+  grid-row: 1 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.about-image-small-1,
+.about-image-small-2 {
+  grid-column: 8 / 13;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 288px;
+}
+
+.about-image-box {
+  width: 100%;
+  height: 100%;
+  background: var(--therapist-sage);
+}
+
+.about-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--motion-slow) var(--ease-smooth);
+}
+
+.about-image-box:hover img {
+  transform: scale(1.05);
+}
+
+.about-content-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4xl);
+}
+
+.about-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--therapist-golden);
+  margin: 0 0 var(--spacing-xl) 0;
+  border-radius: 2px;
+}
+
+.about-heading {
+  font-family: var(--ff-heading);
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--therapist-text-muted);
+  margin-bottom: 20px;
+}
+
+.about-content-right {
+  padding: var(--spacing-2xl);
+  background: linear-gradient(135deg, var(--therapist-sage) 0%, #C5D1BE 100%);
+  border-radius: 12px;
+}
+
+.about-features {
+  list-style: none;
+}
+
+.about-feature-item {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  transition: transform var(--motion-default) var(--ease-smooth);
+}
+
+.about-feature-item:hover {
+  transform: translateX(8px);
+}
+
+.about-feature-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--therapist-olive);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--therapist-light-base);
+  font-weight: 700;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.about-feature-text h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--therapist-olive);
+  margin-bottom: 8px;
+}
+
+.about-feature-text p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--therapist-olive);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.services-section {
+  background: linear-gradient(180deg, var(--therapist-light-base) 0%, #f0f0ed 100%);
+  padding: var(--spacing-5xl) var(--spacing-lg);
+}
+
+.services-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.services-header h2 {
+  font-family: var(--ff-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 500;
+  color: var(--therapist-text-main);
+  margin-bottom: var(--spacing-md);
+}
+
+.services-header p {
+  font-size: 18px;
+  color: var(--therapist-text-muted);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.services-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-4xl);
+}
+
+.service-card {
+  background: var(--therapist-white);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--therapist-border);
+  transition: all var(--motion-default) var(--ease-smooth);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--therapist-dusty-rose);
+}
+
+.card-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(184, 196, 176, 0.12);
+  border-radius: 12px;
+  margin-bottom: var(--spacing-lg);
+  transition: all var(--motion-default) var(--ease-smooth);
+}
+
+.service-card:hover .card-icon {
+  background: var(--therapist-dusty-rose);
+}
+
+.card-icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: #5A766A;
+  stroke-width: 1.5;
+  fill: none;
+  transition: stroke var(--motion-default);
+}
+
+.service-card:hover .card-icon svg {
+  stroke: var(--therapist-white);
+}
+
+.card-title {
+  font-family: var(--ff-heading);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--therapist-text-main);
+  margin-bottom: var(--spacing-md);
+}
+
+.card-divider {
+  width: 36px;
+  height: 1px;
+  background: var(--therapist-sage);
+  margin-bottom: var(--spacing-md);
+  opacity: 0.6;
+  transition: all var(--motion-default) var(--ease-smooth);
+}
+
+.service-card:hover .card-divider {
+  width: 48px;
+  opacity: 1;
+}
+
+.card-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--therapist-text-muted);
+}
+
+.cta-strip {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.cta-text {
+  font-family: var(--ff-heading);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--therapist-text-main);
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--spacing-md) 36px;
+  border: none;
+  border-radius: 10px;
+  background: var(--therapist-olive);
+  color: var(--therapist-light-base);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--motion-default) var(--ease-smooth);
+  box-shadow: var(--shadow-sm);
+}
+
+.cta-button:hover {
+  background: var(--therapist-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TESTIMONIALS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.testimonials-section {
+  background: var(--therapist-olive);
+  padding: var(--spacing-5xl) 0;
+  color: var(--therapist-light-base);
+}
+
+.testimonials-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.testimonials-header {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.testimonials-header h2 {
+  font-family: var(--ff-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  margin-bottom: var(--spacing-md);
+}
+
+.testimonials-header p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all var(--motion-default) var(--ease-smooth);
+}
+
+.testimonial-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-6px);
+}
+
+.testimonial-quote {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  background: var(--therapist-golden);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--therapist-olive);
+}
+
+.author-info h4 {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.author-info p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTACT
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.contact {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--spacing-5xl) var(--spacing-lg);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.contact__header {
+  grid-column: 3 / 11;
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.contact__title {
+  font-family: var(--ff-heading);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 600;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-xl);
+}
+
+.contact__intro {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--therapist-text-main);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact__form-container {
+  grid-column: 3 / 11;
+  background: var(--therapist-white);
+  border-radius: 16px;
+  padding: var(--spacing-3xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact__form-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--therapist-olive);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.contact__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--therapist-text-main);
+}
+
+.contact__icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--therapist-olive);
+  stroke-width: 1.5;
+}
+
+.contact__input,
+.contact__textarea,
+.contact__select {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-family: var(--ff-body);
+  font-size: 16px;
+  color: var(--therapist-text-main);
+  background: var(--therapist-white);
+  border: 1.5px solid var(--therapist-border);
+  border-radius: 8px;
+  transition: all 200ms ease;
+}
+
+.contact__input:focus,
+.contact__textarea:focus,
+.contact__select:focus {
+  outline: none;
+  border-color: var(--therapist-olive);
+  box-shadow: 0 0 0 3px rgba(60, 74, 62, 0.08);
+}
+
+.contact__textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.contact__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%233C4A3E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.contact__error {
+  font-size: 14px;
+  color: var(--therapist-error);
+  margin-top: -12px;
+  display: none;
+}
+
+.contact__error--visible {
+  display: block;
+}
+
+.contact__button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.contact__button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 18px 48px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--therapist-white);
+  background: var(--therapist-olive);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--motion-default) var(--ease-smooth);
+}
+
+.contact__button:hover:not(:disabled) {
+  background: var(--therapist-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact__button-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  transition: transform var(--motion-default);
+}
+
+.contact__button:hover:not(:disabled) .contact__button-icon {
+  transform: translateX(3px);
+}
+
+.contact__assurance {
+  font-size: 14px;
+  color: var(--therapist-text-muted);
+  text-align: center;
+}
+
+.contact__success {
+  display: none;
+  grid-column: 3 / 11;
+  text-align: center;
+  padding: var(--spacing-3xl);
+  background: rgba(184, 196, 176, 0.15);
+  border-radius: 16px;
+}
+
+.contact__success--visible {
+  display: block;
+}
+
+.contact__success-icon {
+  width: 48px;
+  height: 48px;
+  stroke: var(--therapist-olive);
+  stroke-width: 2;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.contact__success-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact__success-message {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--therapist-text-main);
+}
+
+.contact__after-form {
+  grid-column: 3 / 11;
+  text-align: center;
+  margin-top: var(--spacing-2xl);
+}
+
+.contact__encouragement {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--therapist-text-main);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact__alt {
+  font-size: 16px;
+  color: var(--therapist-text-muted);
+}
+
+.contact__email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--therapist-olive);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+
+.contact__email-link:hover {
+  color: var(--therapist-hover);
+}
+
+.contact__email-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTA SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cta-section {
+  background: linear-gradient(135deg, var(--therapist-dusty-rose), var(--therapist-golden));
+  padding: var(--spacing-5xl) 0;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.cta-section h2 {
+  font-family: var(--ff-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.cta-section p {
+  font-size: 20px;
+  color: var(--therapist-text-main);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+footer {
+  background: var(--therapist-text-main);
+  color: var(--therapist-light-base);
+  padding: 60px 0 30px;
+}
+
+.footer-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.footer-column h3 {
+  font-family: var(--ff-heading);
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--therapist-golden);
+}
+
+.footer-column p,
+.footer-column a {
+  color: rgba(250, 249, 247, 0.8);
+  text-decoration: none;
+  line-height: 1.8;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  transition: color var(--motion-default);
+}
+
+.footer-column a:hover {
+  color: var(--therapist-golden);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(250, 249, 247, 0.2);
+  padding-top: 30px;
+  text-align: center;
+  color: rgba(250, 249, 247, 0.6);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLL TO TOP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--therapist-olive);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--motion-default) var(--ease-smooth);
+  z-index: 999;
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background: var(--therapist-hover);
+  transform: translateY(-3px);
+}
+
+.scroll-to-top svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--therapist-light-base);
+  stroke-width: 2;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MIND EASE - INDEX.HTML RESPONSIVE CSS
+   Mobile-First Responsive Design (300px - 2560px+)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   1. GLOBAL RESPONSIVE ADJUSTMENTS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Reduce spacing tokens on mobile */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 20px;
+    --spacing-2xl: 32px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 56px;
+    --spacing-5xl: 80px;
+  }
+}
+
+/* Extra small phones: 300px - 359px */
+@media (max-width: 359px) {
+  :root {
+    --spacing-lg: 16px;
+    --spacing-xl: 16px;
+    --spacing-2xl: 24px;
+    --spacing-3xl: 32px;
+    --spacing-4xl: 40px;
+    --spacing-5xl: 56px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   2. MOBILE NAVIGATION FIX (CRITICAL)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Show mobile menu toggle on tablets and mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1002;
+  }
+
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile menu - fixed overlay */
+  .nav-menu {
+    position: fixed;
+    top: 76px; /* Below nav bar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 76px);
+    background: var(--therapist-white);
+    flex-direction: column;
+    padding: 2rem;
+    transform: translateX(-100%); /* Start off-screen left */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.22, 0.9, 0.3, 1);
+    z-index: 999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Active state - slide in */
+  .nav-menu.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Stack nav links vertically */
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-list-item {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  /* Full-width CTA button on mobile */
+  .nav-book-cta {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 16px;
+    margin-top: auto; /* Push to bottom if space available */
+  }
+
+  /* Backdrop overlay when menu is open */
+  .nav-menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  .nav-menu.active::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .therapist-container-nav {
+    padding: 0 12px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .nav-menu {
+    padding: 1.5rem;
+    top: 70px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3. HERO SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 90vh;
+  }
+
+  .therapist-hero-content {
+    padding: var(--spacing-3xl) 0;
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 85vh;
+    padding-top: 76px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(28px, 8vw, 48px);
+    line-height: 1.2;
+  }
+
+  .hero-text .subtext {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Stack hero CTAs vertically */
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+    padding: 16px 24px;
+    font-size: 16px;
+    min-height: 50px; /* Touch-friendly */
+  }
+
+  /* Stack trust badges on mobile */
+  .trust-badges {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+  }
+
+  .trust-badge {
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 80vh;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .hero-text .subtext {
+    font-size: 15px;
+  }
+
+  .therapist-hero-content {
+    padding: var(--spacing-2xl) 0;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .hero {
+    min-height: 75vh;
+  }
+
+  .hero-text h1 {
+    font-size: 24px;
+  }
+
+  .hero-text .subtext {
+    font-size: 14px;
+  }
+
+  .trust-badge {
+    font-size: 13px;
+  }
+
+  .trust-badge-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   4. ABOUT SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .about-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  /* Simplify complex grid on tablets */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .about-image-large {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 400px;
+  }
+
+  .about-image-small-1,
+  .about-image-small-2 {
+    grid-column: span 1;
+    min-height: 300px;
+  }
+
+  .about-content-section {
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .about-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  /* Single column layout for about grid */
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-image-large,
+  .about-image-small-1,
+  .about-image-small-2 {
+    width: 100%;
+    min-height: 250px;
+    grid-column: unset;
+    grid-row: unset;
+  }
+
+  .about-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .about-main-heading {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  .about-main-subheading {
+    font-size: 18px;
+  }
+
+  /* Stack content section */
+  .about-content-section {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+  }
+
+  .about-heading {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+  }
+
+  .about-content-right {
+    padding: var(--spacing-xl);
+  }
+
+  .about-feature-item {
+    padding: 16px;
+  }
+
+  .about-feature-text h3 {
+    font-size: 16px;
+  }
+
+  .about-feature-text p {
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .about-image-large,
+  .about-image-small-1,
+  .about-image-small-2 {
+    min-height: 220px;
+  }
+
+  .about-main-heading {
+    font-size: 26px;
+  }
+
+  .about-heading {
+    font-size: 24px;
+  }
+
+  .about-divider {
+    width: 60px;
+  }
+
+  .about-content-right {
+    padding: var(--spacing-lg);
+  }
+
+  .about-feature-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .about-image-large,
+  .about-image-small-1,
+  .about-image-small-2 {
+    min-height: 200px;
+  }
+
+  .about-label {
+    font-size: 12px;
+  }
+
+  .about-main-heading {
+    font-size: 24px;
+  }
+
+  .about-main-subheading {
+    font-size: 16px;
+  }
+
+  .about-heading {
+    font-size: 22px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   5. SERVICES SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .services-section {
+    padding: var(--spacing-4xl) var(--spacing-lg);
+  }
+
+  /* 2 columns on tablets */
+  .services-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .services-section {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  .services-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .services-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  .services-header p {
+    font-size: 16px;
+  }
+
+  /* Single column on mobile */
+  .services-cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .service-card {
+    padding: 32px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .cta-strip {
+    gap: 20px;
+  }
+
+  .cta-text {
+    font-size: 26px;
+  }
+
+  /* Full-width CTA button on mobile */
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 32px;
+    min-height: 52px; /* Touch-friendly */
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .services-header h2 {
+    font-size: 26px;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-description {
+    font-size: 14px;
+  }
+
+  .cta-text {
+    font-size: 22px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .services-section {
+    padding: var(--spacing-2xl) 12px;
+  }
+
+  .services-header h2 {
+    font-size: 24px;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+
+  .cta-text {
+    font-size: 20px;
+  }
+
+  .cta-button {
+    font-size: 14px;
+    padding: 14px 24px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   6. TESTIMONIALS SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .testimonials-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  /* 2 columns on tablets */
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .testimonials-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .testimonials-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  .testimonials-header p {
+    font-size: 16px;
+  }
+
+  /* Single column on mobile */
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .testimonial-card {
+    padding: 32px;
+  }
+
+  .testimonial-quote {
+    font-size: 16px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .author-avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .author-info h4 {
+    font-size: 16px;
+  }
+
+  .author-info p {
+    font-size: 13px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .testimonials-header h2 {
+    font-size: 26px;
+  }
+
+  .testimonial-card {
+    padding: 24px;
+  }
+
+  .testimonial-quote {
+    font-size: 15px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .testimonials-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .testimonials-header h2 {
+    font-size: 24px;
+  }
+
+  .testimonial-card {
+    padding: 20px;
+  }
+
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   7. CONTACT SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .contact {
+    padding: var(--spacing-4xl) var(--spacing-lg);
+  }
+
+  .contact__header,
+  .contact__form-container,
+  .contact__success,
+  .contact__after-form {
+    grid-column: 2 / 12;
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .contact {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+  }
+
+  /* Full-width on mobile */
+  .contact__grid {
+    display: block;
+  }
+
+  .contact__header,
+  .contact__form-container,
+  .contact__success,
+  .contact__after-form {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact__header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .contact__title {
+    font-size: clamp(28px, 7vw, 48px);
+  }
+
+  .contact__intro {
+    font-size: 17px;
+  }
+
+  .contact__form-container {
+    padding: var(--spacing-xl);
+  }
+
+  .contact__form-title {
+    font-size: 22px;
+    margin-bottom: 32px;
+  }
+
+  /* Ensure touch-friendly form fields */
+  .contact__input,
+  .contact__textarea,
+  .contact__select {
+    min-height: 48px; /* Touch-friendly */
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .contact__textarea {
+    min-height: 140px;
+  }
+
+  .contact__button {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 32px;
+    min-height: 54px; /* Touch-friendly */
+  }
+
+  .contact__success {
+    padding: var(--spacing-xl);
+  }
+
+  .contact__after-form {
+    margin-top: var(--spacing-xl);
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .contact__title {
+    font-size: 26px;
+  }
+
+  .contact__intro {
+    font-size: 16px;
+  }
+
+  .contact__form-container {
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+  }
+
+  .contact__form-title {
+    font-size: 20px;
+  }
+
+  .contact__label {
+    font-size: 15px;
+  }
+
+  .contact__input,
+  .contact__textarea,
+  .contact__select {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .contact__button {
+    font-size: 16px;
+  }
+
+  .contact__success-title {
+    font-size: 20px;
+  }
+
+  .contact__success-message {
+    font-size: 16px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .contact {
+    padding: var(--spacing-2xl) 12px;
+  }
+
+  .contact__title {
+    font-size: 24px;
+  }
+
+  .contact__form-container {
+    padding: 16px;
+  }
+
+  .contact__form-title {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .contact__form {
+    gap: var(--spacing-lg);
+  }
+
+  .contact__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .contact__button {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   8. CTA SECTION RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(26px, 6vw, 42px);
+  }
+
+  .cta-section p {
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+
+  /* Full-width CTA button */
+  .cta-section .cta-button {
+    width: 100%;
+    max-width: 400px;
+    min-height: 54px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .cta-section h2 {
+    font-size: 24px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .cta-section {
+    padding: var(--spacing-2xl) 12px;
+  }
+
+  .cta-section h2 {
+    font-size: 22px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   9. FOOTER RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 0 24px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  footer {
+    padding: 32px 0 20px;
+  }
+
+  .footer-column h3 {
+    font-size: 16px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .footer-container {
+    padding: 0 12px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   10. SCROLL TO TOP BUTTON RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .scroll-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .scroll-to-top svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   11. COOKIE BANNER RESPONSIVE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .cookie-banner {
+    padding: 16px;
+  }
+
+  .cookie-content {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .cookie-text {
+    min-width: 100%;
+  }
+
+  .cookie-accept {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .cookie-text p {
+    font-size: 13px;
+  }
+
+  .cookie-accept {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   12. LARGE DESKTOP OPTIMIZATIONS (1440px+)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 1440px) {
+  .therapist-container,
+  .about-container,
+  .services-container,
+  .testimonials-container,
+  .contact,
+  .footer-container,
+  .cta-container {
+    max-width: 1400px;
+  }
+
+  /* Slightly larger type on big screens */
+  .hero-text h1 {
+    font-size: 68px;
+  }
+
+  .hero-text .subtext {
+    font-size: 21px;
+  }
+
+  .about-main-heading {
+    font-size: 56px;
+  }
+
+  .services-header h2,
+  .testimonials-header h2 {
+    font-size: 52px;
+  }
+
+  /* 4 columns for service cards on very large screens */
+  .services-cards-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* 3 columns for testimonials on very large screens */
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Extra large desktop: 2560px+ */
+@media (min-width: 2560px) {
+  .therapist-container,
+  .about-container,
+  .services-container,
+  .testimonials-container,
+  .contact,
+  .footer-container,
+  .cta-container {
+    max-width: 1800px;
+  }
+
+  .hero-text h1 {
+    font-size: 72px;
+  }
+
+  .about-main-heading {
+    font-size: 64px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   13. UTILITY CLASSES FOR TOUCH TARGETS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Ensure all interactive elements meet 44x44px minimum on mobile */
+@media (max-width: 768px) {
+  button,
+  .btn,
+  .nav-list-item,
+  .nav-book-cta,
+  .cta-button,
+  .contact__button,
+  input[type="submit"],
+  input[type="button"],
+  .service-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Links with sufficient padding */
+  a {
+    padding: 4px;
+  }
+
+  /* Form elements */
+  input,
+  textarea,
+  select {
+    min-height: 48px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   14. IMAGE RESPONSIVE BEHAVIOR
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Background images - always cover and center */
+.hero-background,
+[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   15. TYPOGRAPHY FINE-TUNING FOR READABILITY
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Small phones: reduce base font slightly for better fit */
+@media (max-width: 480px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    line-height: 1.2;
+  }
+
+  h2 {
+    line-height: 1.3;
+  }
+
+  h3 {
+    line-height: 1.3;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* Very small phones: minimum readable sizes */
+@media (max-width: 359px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   16. LANDSCAPE PHONE ORIENTATIONS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* iPhone SE and similar in landscape */
+@media (max-height: 450px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding-top: 60px;
+  }
+
+  .therapist-hero-content {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .hero-text .subtext {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .hero-ctas {
+    gap: 12px;
+  }
+
+  .trust-badges {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  /* Reduce section padding in landscape */
+  .about-section,
+  .services-section,
+  .testimonials-section,
+  .contact,
+  .cta-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   17. TABLET PORTRAIT SPECIFIC (768px - 1023px)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Services: 2 columns looks best on tablets */
+  .services-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Testimonials: 2 columns on tablets */
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* About images: 2 columns */
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-image-large {
+    grid-column: 1 / -1;
+  }
+
+  /* Contact form: medium width on tablets */
+  .contact__header,
+  .contact__form-container,
+  .contact__success,
+  .contact__after-form {
+    grid-column: 2 / 12;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   18. TABLET LANDSCAPE / SMALL LAPTOP (1024px - 1199px)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Services: 3 columns */
+  .services-cards-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Testimonials: 3 columns */
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   19. FOCUS STATES FOR ACCESSIBILITY
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Enhanced focus states for keyboard navigation */
+@media (max-width: 768px) {
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 3px solid var(--therapist-olive);
+    outline-offset: 2px;
+  }
+
+  /* Visible focus on cards */
+  .service-card:focus,
+  .testimonial-card:focus {
+    outline: 2px solid var(--therapist-olive);
+    outline-offset: 4px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   20. REDUCED MOTION PREFERENCE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-background {
+    transform: none !important;
+  }
+
+  .nav-menu {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transform: none !important;
+  }
+
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-menu:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   21. PRINT STYLES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media print {
+  /* Hide non-essential elements */
+  .therapist-nav,
+  .mobile-menu-toggle,
+  .hero-background,
+  .scroll-to-top,
+  .cookie-banner,
+  .cta-section {
+    display: none !important;
+  }
+
+  /* Ensure readable text */
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  /* Remove shadows and decorative elements */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure links show URLs */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   22. SPECIFIC PHONE MODELS OPTIMIZATION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* iPhone SE (1st gen) - 320px */
+@media (max-width: 320px) {
+  .therapist-container-nav {
+    padding: 0 12px;
+  }
+
+  .brand-name {
+    font-size: 15px;
+  }
+
+  .hero-text h1 {
+    font-size: 24px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}
+
+/* Samsung Galaxy Fold (unfolded) and similar */
+@media (min-width: 280px) and (max-width: 320px) {
+  .therapist-container,
+  .about-container,
+  .services-container,
+  .testimonials-container,
+  .contact,
+  .footer-container,
+  .cta-container {
+    padding: 0 12px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   23. HORIZONTAL OVERFLOW PREVENTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Prevent any horizontal scrolling on all screen sizes */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers respect viewport width */
+* {
+  max-width: 100%;
+}
+
+/* Prevent long words from breaking layout */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+span {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   END OF RESPONSIVE CSS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

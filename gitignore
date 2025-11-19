@@ -1,0 +1,34 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Node (only if you ever add npm in the future)
+node_modules/
+
+# Build directories (future-proof)
+dist/
+out/
+build/
+
+# Temporary files
+*.tmp
+*.cache
+*.swp
+
+# Mac metadata
+._*

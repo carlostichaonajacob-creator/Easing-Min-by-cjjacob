@@ -1,0 +1,2113 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --therapist-olive: #3C4A3E;
+  --therapist-sage: #B8C4B0;
+  --therapist-dusty-rose: #D9B5A7;
+  --therapist-light-base: #FAF9F7;
+  --therapist-text-main: #1E1E1E;
+  --therapist-text-muted: #6B6B6B;
+  --therapist-golden: #E6D2A3;
+  --therapist-white: #FFFFFF;
+  --therapist-border: #EAE7E3;
+  --therapist-hover: #2F3B33;
+  --ff-heading: 'Playfair Display', serif;
+  --ff-body: 'Inter', sans-serif;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+  --spacing-5xl: 120px;
+  --container-max: 1200px;
+  --nav-height: 80px;
+  --motion-fast: 0.18s;
+  --motion-default: 0.24s;
+  --motion-slow: 0.6s;
+  --ease-smooth: cubic-bezier(0.22, 0.9, 0.3, 1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-body);
+  background: var(--therapist-light-base);
+  color: var(--therapist-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAVIGATION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.therapist-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(250, 249, 247, 0.95);
+  transition: all var(--motion-default) var(--ease-smooth);
+  padding: 18px 0;
+}
+
+.therapist-nav--scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.therapist-container-nav {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 700;
+  color: var(--therapist-olive);
+  text-decoration: none;
+  font-size: 20px;
+  font-family: var(--ff-heading);
+  transition: opacity var(--motion-fast) var(--ease-smooth);
+}
+
+.brand-link:hover {
+  opacity: 0.8;
+}
+
+.brand-logo {
+  height: 40px;
+  width: 40px;
+  background: var(--therapist-sage);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--therapist-olive);
+  font-size: 14px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list-item {
+  font-family: var(--ff-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--therapist-text-main);
+  text-decoration: none;
+  transition: color var(--motion-fast) var(--ease-smooth);
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-list-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--therapist-olive);
+  transition: width var(--motion-default) var(--ease-smooth);
+}
+
+.nav-list-item:hover::after {
+  width: 100%;
+}
+
+.nav-book-cta {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 8px;
+  background: var(--therapist-olive);
+  color: var(--therapist-light-base);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all var(--motion-default) var(--ease-smooth);
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+
+.nav-book-cta:hover {
+  background: var(--therapist-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--therapist-olive);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--therapist-olive);
+  padding-top: var(--nav-height);
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://imageshttps://unsplash.com/photos/woman-wearing-gray-jacket-F9DFuJoS9EU?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink.unsplash.com/photo-1576091160550-112173f7f869?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.hero-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(60, 74, 62, 0.85) 0%, rgba(60, 74, 62, 0.6) 100%);
+}
+
+.therapist-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  width: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.hero h1 {
+  font-family: var(--ff-heading);
+  font-size: clamp(44px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--therapist-light-base);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.hero p {
+  font-size: clamp(16px, 2vw, 19px);
+  line-height: 1.8;
+  color: var(--therapist-light-base);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all var(--motion-default) var(--ease-smooth);
+  cursor: pointer;
+  border: none;
+  width: fit-content;
+}
+
+.btn-primary {
+  background: var(--therapist-golden);
+  color: var(--therapist-olive);
+}
+
+.btn-primary:hover {
+  background: #dcc791;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--therapist-light-base);
+  border: 2px solid var(--therapist-light-base);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STORY SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.story-section {
+  background: var(--therapist-light-base);
+  padding: var(--spacing-5xl) 0;
+}
+
+.story-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4xl);
+  align-items: center;
+}
+
+.story-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  height: 500px;
+}
+
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--motion-slow) var(--ease-smooth);
+}
+
+.story-image:hover img {
+  transform: scale(1.08);
+}
+
+.story-content h2 {
+  font-family: var(--ff-heading);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.story-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--therapist-text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PHILOSOPHY SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.philosophy-section {
+  padding: var(--spacing-5xl) 0;
+  background: linear-gradient(180deg, var(--therapist-light-base) 0%, #f0f0ed 100%);
+}
+
+.philosophy-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.philosophy-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-4xl);
+}
+
+.philosophy-header h2 {
+  font-family: var(--ff-heading);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.philosophy-header p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--therapist-text-muted);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4xl);
+  align-items: start;
+}
+
+.philosophy-left h3 {
+  font-family: var(--ff-heading);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.philosophy-left p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--therapist-text-muted);
+  margin-bottom: var(--spacing-lg);
+}
+
+.philosophy-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+}
+
+.philosophy-item {
+  background: var(--therapist-white);
+  padding: var(--spacing-2xl);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: all var(--motion-default) var(--ease-smooth);
+  border: 1px solid var(--therapist-border);
+}
+
+.philosophy-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--therapist-dusty-rose);
+}
+
+.philosophy-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.philosophy-item h4 {
+  font-family: var(--ff-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-md);
+}
+
+.philosophy-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--therapist-text-muted);
+  margin: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   VALUES SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.values-section {
+  padding: var(--spacing-5xl) 0;
+  background: var(--therapist-light-base);
+}
+
+.values-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.values-header {
+  text-align: center;
+  margin-bottom: var(--spacing-4xl);
+}
+
+.values-header h2 {
+  font-family: var(--ff-heading);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--therapist-olive);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.value-card {
+  background: var(--therapist-white);
+  padding: var(--spacing-2xl);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: all var(--motion-default) var(--ease-smooth);
+  border: 1px solid var(--therapist-border);
+}
+
+.value-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--therapist-dusty-rose);
+}
+
+.value-icon {
+  font-size: 48px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.value-card h3 {
+  font-family: var(--ff-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-md);
+}
+
+.value-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--therapist-text-muted);
+  margin: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTA SECTION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cta-section {
+  background: linear-gradient(135deg, var(--therapist-dusty-rose), var(--therapist-golden));
+  padding: var(--spacing-5xl) 0;
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.cta-section h2 {
+  font-family: var(--ff-heading);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--therapist-olive);
+  margin-bottom: var(--spacing-lg);
+}
+
+.cta-section p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--therapist-text-main);
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+footer {
+  background: var(--therapist-text-main);
+  color: var(--therapist-light-base);
+  padding: 60px 0 30px;
+}
+
+.footer-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.footer-column h3 {
+  font-family: var(--ff-heading);
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--therapist-golden);
+}
+
+.footer-column p,
+.footer-column a {
+  color: rgba(250, 249, 247, 0.8);
+  text-decoration: none;
+  line-height: 1.8;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  transition: color var(--motion-default);
+}
+
+.footer-column a:hover {
+  color: var(--therapist-golden);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(250, 249, 247, 0.2);
+  padding-top: 30px;
+  text-align: center;
+  color: rgba(250, 249, 247, 0.6);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCROLL TO TOP
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--therapist-olive);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--motion-default) var(--ease-smooth);
+  z-index: 999;
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background: var(--therapist-hover);
+  transform: translateY(-3px);
+}
+
+.scroll-to-top svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--therapist-light-base);
+  stroke-width: 2;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MIND EASE - ABOUT.HTML RESPONSIVE CSS
+   Mobile-First Responsive Design (300px - 2560px+)
+   Reference: index.html responsive patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   1. GLOBAL RESPONSIVE ADJUSTMENTS (SHARED)
+   Matches index.html spacing adjustments
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Reduce spacing tokens on mobile - matches index.html */
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 20px;
+    --spacing-2xl: 32px;
+    --spacing-3xl: 48px;
+    --spacing-4xl: 56px;
+    --spacing-5xl: 80px;
+  }
+}
+
+/* Extra small phones: 300px - 359px - matches index.html */
+@media (max-width: 359px) {
+  :root {
+    --spacing-lg: 16px;
+    --spacing-xl: 16px;
+    --spacing-2xl: 24px;
+    --spacing-3xl: 32px;
+    --spacing-4xl: 40px;
+    --spacing-5xl: 56px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   2. MOBILE NAVIGATION FIX (SHARED WITH ALL PAGES)
+   Reference: index.html navigation patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Show mobile menu toggle on tablets and mobile */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1002;
+  }
+
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile menu - fixed overlay - matches index.html pattern */
+  .nav-menu {
+    position: fixed;
+    top: 76px; /* Below nav bar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 76px);
+    background: var(--therapist-white);
+    flex-direction: column;
+    padding: 2rem;
+    transform: translateX(-100%); /* Start off-screen left */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.22, 0.9, 0.3, 1);
+    z-index: 999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Active state - slide in */
+  .nav-menu.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Stack nav links vertically */
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-list-item {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  /* Full-width CTA button on mobile */
+  .nav-book-cta {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 16px;
+    margin-top: auto;
+  }
+
+  /* Backdrop overlay when menu is open */
+  .nav-menu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  .nav-menu.active::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .therapist-container-nav {
+    padding: 0 12px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .nav-menu {
+    padding: 1.5rem;
+    top: 70px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3. STORY SECTION RESPONSIVE
+   Complex grid (1fr 1fr) must collapse to single column
+   Reference: index.html about section patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .story-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .story-grid {
+    gap: var(--spacing-2xl);
+  }
+
+  /* Reduce image height on tablets */
+  .story-image {
+    height: 400px;
+  }
+}
+
+/* Mobile devices: 768px and below - CRITICAL FIX */
+@media (max-width: 768px) {
+  .story-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  /* Stack two-column grid to single column - matches index.html pattern */
+  .story-grid {
+    grid-template-columns: 1fr; /* Force single column */
+    gap: var(--spacing-xl);
+  }
+
+  /* Reduce image height for mobile - matches index requirement */
+  .story-image {
+    height: 300px; /* Down from 500px as per requirements */
+    width: 100%;
+  }
+
+  /* Ensure images scale properly */
+  .story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Adjust typography for mobile readability */
+  .story-content h2 {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .story-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .story-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* Further reduce image height */
+  .story-image {
+    height: 250px;
+  }
+
+  .story-content h2 {
+    font-size: 26px;
+  }
+
+  .story-content p {
+    font-size: 15px;
+  }
+
+  /* Adjust button if present */
+  .story-content .btn {
+    width: 100%;
+    min-height: 48px; /* Touch-friendly */
+    font-size: 15px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .story-container {
+    padding: 0 12px;
+  }
+
+  .story-image {
+    height: 220px;
+  }
+
+  .story-content h2 {
+    font-size: 24px;
+  }
+
+  .story-content p {
+    font-size: 14px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   4. PHILOSOPHY SECTION RESPONSIVE
+   Two-column grid (philosophy-left + philosophy-right) must stack
+   Philosophy-right has 2-column grid that must become 1 column
+   Reference: index.html complex grid collapse patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .philosophy-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .philosophy-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .philosophy-grid {
+    gap: var(--spacing-2xl);
+  }
+
+  /* Philosophy-right: reduce to single column on tablets */
+  .philosophy-right {
+    grid-template-columns: 1fr; /* Single column on tablets */
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below - CRITICAL FIX */
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .philosophy-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .philosophy-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .philosophy-header p {
+    font-size: 17px;
+  }
+
+  /* Main grid: stack to single column - matches index.html pattern */
+  .philosophy-grid {
+    grid-template-columns: 1fr; /* Force single column */
+    gap: var(--spacing-xl);
+  }
+
+  /* Philosophy-left typography adjustments */
+  .philosophy-left h3 {
+    font-size: 26px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .philosophy-left p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Philosophy-right: single column on mobile */
+  .philosophy-right {
+    grid-template-columns: 1fr; /* Force single column */
+    gap: var(--spacing-md);
+  }
+
+  /* Philosophy items: adjust padding and spacing */
+  .philosophy-item {
+    padding: var(--spacing-xl);
+  }
+
+  .philosophy-icon {
+    font-size: 40px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .philosophy-item h4 {
+    font-size: 17px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .philosophy-item p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .philosophy-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .philosophy-header h2 {
+    font-size: 26px;
+  }
+
+  .philosophy-header p {
+    font-size: 16px;
+  }
+
+  .philosophy-left h3 {
+    font-size: 24px;
+  }
+
+  .philosophy-left p {
+    font-size: 15px;
+  }
+
+  /* Reduce philosophy item padding */
+  .philosophy-item {
+    padding: var(--spacing-lg);
+  }
+
+  .philosophy-icon {
+    font-size: 36px;
+  }
+
+  .philosophy-item h4 {
+    font-size: 16px;
+  }
+
+  .philosophy-item p {
+    font-size: 13px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .philosophy-container {
+    padding: 0 12px;
+  }
+
+  .philosophy-header h2 {
+    font-size: 24px;
+  }
+
+  .philosophy-header p {
+    font-size: 15px;
+  }
+
+  .philosophy-left h3 {
+    font-size: 22px;
+  }
+
+  .philosophy-item {
+    padding: 16px;
+  }
+
+  .philosophy-icon {
+    font-size: 32px;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   5. VALUES SECTION RESPONSIVE
+   Four-column grid → 2 columns → 1 column progression
+   Reference: index.html services cards grid patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below - 2 columns */
+@media (max-width: 1024px) {
+  .values-section {
+    padding: var(--spacing-4xl) 0;
+  }
+
+  .values-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  /* 2 columns on tablets - matches index.html pattern */
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Mobile devices: 768px and below - 2 columns still works */
+@media (max-width: 768px) {
+  .values-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .values-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .values-header h2 {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+
+  /* Keep 2 columns on medium mobile for better layout */
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  /* Adjust card padding */
+  .value-card {
+    padding: var(--spacing-xl);
+  }
+
+  .value-icon {
+    font-size: 40px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .value-card h3 {
+    font-size: 18px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .value-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* Small phones: 480px and below - SINGLE COLUMN */
+@media (max-width: 480px) {
+  .values-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* Single column for small phones - matches index.html pattern */
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .values-header h2 {
+    font-size: 26px;
+  }
+
+  .value-card {
+    padding: var(--spacing-lg);
+  }
+
+  .value-icon {
+    font-size: 36px;
+  }
+
+  .value-card h3 {
+    font-size: 17px;
+  }
+
+  .value-card p {
+    font-size: 13px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .values-container {
+    padding: 0 12px;
+  }
+
+  .values-header h2 {
+    font-size: 24px;
+  }
+
+  .value-card {
+    padding: 16px;
+  }
+
+  .value-icon {
+    font-size: 32px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .value-card h3 {
+    font-size: 16px;
+  }
+
+  .value-card p {
+    font-size: 13px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   6. CTA SECTION RESPONSIVE
+   Reference: index.html CTA patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(26px, 6vw, 42px);
+  }
+
+  .cta-section p {
+    font-size: 17px;
+    margin-bottom: 32px;
+  }
+
+  /* Full-width CTA button - matches index.html */
+  .cta-section .btn,
+  .cta-section .btn-primary {
+    width: 100%;
+    max-width: 400px;
+    min-height: 54px; /* Touch-friendly */
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .cta-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .cta-section h2 {
+    font-size: 24px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .cta-section .btn {
+    font-size: 15px;
+    padding: 14px 28px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .cta-container {
+    padding: 0 12px;
+  }
+
+  .cta-section h2 {
+    font-size: 22px;
+  }
+
+  .cta-section p {
+    font-size: 15px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   7. FOOTER RESPONSIVE (SHARED)
+   Reference: index.html footer patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablets: 1024px and below */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 0 24px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    font-size: 15px;
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    font-size: 14px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  footer {
+    padding: 32px 0 20px;
+  }
+
+  .footer-column h3 {
+    font-size: 16px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+  }
+}
+
+/* Very small phones: 300px - 359px */
+@media (max-width: 359px) {
+  .footer-container {
+    padding: 0 12px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   8. SCROLL TO TOP BUTTON RESPONSIVE (SHARED)
+   Reference: index.html scroll button patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Mobile devices: 768px and below */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .scroll-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Small phones: 480px and below */
+@media (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .scroll-to-top svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   9. TOUCH-FRIENDLY INTERACTIONS
+   Ensure 44x44px minimum touch targets on mobile
+   Reference: index.html touch target requirements
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  /* All buttons and interactive elements */
+  button,
+  .btn,
+  .btn-primary,
+  .btn-ghost,
+  .nav-list-item,
+  .nav-book-cta {
+    min-height: 44px; /* Touch-friendly minimum */
+    min-width: 44px;
+  }
+
+  /* Cards should have adequate touch area */
+  .value-card,
+  .philosophy-item {
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  /* Links with sufficient padding */
+  a {
+    padding: 4px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   10. IMAGE RESPONSIVE BEHAVIOR
+   Ensure all images scale properly
+   Reference: index.html image requirements
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* All images must be responsive */
+.story-image img,
+.philosophy-section img,
+.values-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Background images - always cover and center */
+[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   11. TYPOGRAPHY FINE-TUNING FOR READABILITY
+   Reference: index.html typography patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Small phones: reduce base font slightly */
+@media (max-width: 480px) {
+  .story-section,
+  .philosophy-section,
+  .values-section {
+    font-size: 15px;
+  }
+
+  h2 {
+    line-height: 1.3;
+  }
+
+  h3 {
+    line-height: 1.3;
+  }
+
+  h4 {
+    line-height: 1.3;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* Very small phones: minimum readable sizes */
+@media (max-width: 359px) {
+  .story-section,
+  .philosophy-section,
+  .values-section {
+    font-size: 14px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   12. LANDSCAPE PHONE ORIENTATIONS
+   Reference: index.html landscape patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* iPhone SE and similar in landscape */
+@media (max-height: 450px) and (orientation: landscape) {
+  /* Reduce section padding in landscape */
+  .story-section,
+  .philosophy-section,
+  .values-section,
+  .cta-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  /* Reduce image heights in landscape */
+  .story-image {
+    height: 250px;
+  }
+
+  /* Adjust grid gaps */
+  .values-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .philosophy-right {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   13. TABLET PORTRAIT SPECIFIC (768px - 1023px)
+   Reference: index.html tablet optimization
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Story section: keep 2-column on tablets */
+  .story-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .story-image {
+    height: 350px;
+  }
+
+  /* Philosophy: stack main grid but keep right grid 2-column */
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Values: 2 columns works well on tablets */
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   14. TABLET LANDSCAPE / SMALL LAPTOP (1024px - 1199px)
+   Reference: index.html larger tablet patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* Story section: full 2-column layout */
+  .story-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .story-image {
+    height: 450px;
+  }
+
+  /* Philosophy: 2-column main grid */
+  .philosophy-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .philosophy-right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Values: 3 columns on larger tablets */
+  .values-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   15. LARGE DESKTOP OPTIMIZATIONS (1440px+)
+   Reference: index.html large screen patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (min-width: 1440px) {
+  .story-container,
+  .philosophy-container,
+  .values-container,
+  .cta-container,
+  .footer-container {
+    max-width: 1400px;
+  }
+
+  /* Slightly larger type on big screens */
+  .story-content h2 {
+    font-size: 52px;
+  }
+
+  .philosophy-header h2,
+  .values-header h2 {
+    font-size: 52px;
+  }
+
+  .story-content p {
+    font-size: 19px;
+  }
+
+  .philosophy-header p {
+    font-size: 21px;
+  }
+
+  /* Story image: larger on big screens */
+  .story-image {
+    height: 550px;
+  }
+
+  /* Values: keep 4 columns on very large screens */
+  .values-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra large desktop: 2560px+ */
+@media (min-width: 2560px) {
+  .story-container,
+  .philosophy-container,
+  .values-container,
+  .cta-container,
+  .footer-container {
+    max-width: 1800px;
+  }
+
+  .story-content h2 {
+    font-size: 64px;
+  }
+
+  .philosophy-header h2,
+  .values-header h2 {
+    font-size: 64px;
+  }
+
+  .story-image {
+    height: 600px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   16. FOCUS STATES FOR ACCESSIBILITY
+   Enhanced keyboard navigation focus states
+   Reference: index.html accessibility patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  a:focus,
+  button:focus {
+    outline: 3px solid var(--therapist-olive);
+    outline-offset: 2px;
+  }
+
+  /* Visible focus on cards */
+  .value-card:focus,
+  .philosophy-item:focus {
+    outline: 2px solid var(--therapist-olive);
+    outline-offset: 4px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   17. REDUCED MOTION PREFERENCE
+   Respect user's motion preferences
+   Reference: index.html accessibility patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable image hover transforms */
+  .story-image img,
+  .about-image-box img {
+    transform: none !important;
+  }
+
+  /* Disable card hover animations */
+  .value-card:hover,
+  .philosophy-item:hover {
+    transform: none !important;
+  }
+
+  /* Simplified mobile menu transitions */
+  .nav-menu {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transform: none !important;
+  }
+
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-menu:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   18. PRINT STYLES
+   Optimize page for printing
+   Reference: index.html print patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media print {
+  /* Hide non-essential elements */
+  .therapist-nav,
+  .mobile-menu-toggle,
+  .scroll-to-top,
+  .cta-section {
+    display: none !important;
+  }
+
+  /* Ensure readable text */
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  /* Remove shadows and decorative elements */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Prevent page breaks inside cards */
+  .value-card,
+  .philosophy-item {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure story section doesn't break awkwardly */
+  .story-grid {
+    display: block;
+  }
+
+  .story-image {
+    height: auto;
+    max-height: 400px;
+    page-break-after: avoid;
+  }
+
+  /* Show link URLs in print */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   19. SPECIFIC PHONE MODELS OPTIMIZATION
+   iPhone SE, Samsung Galaxy, etc.
+   Reference: index.html device-specific patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* iPhone SE (1st gen) - 320px */
+@media (max-width: 320px) {
+  .story-container,
+  .philosophy-container,
+  .values-container,
+  .cta-container {
+    padding: 0 12px;
+  }
+
+  .story-content h2,
+  .philosophy-header h2,
+  .values-header h2 {
+    font-size: 22px;
+  }
+
+  .story-image {
+    height: 200px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}
+
+/* Samsung Galaxy Fold (unfolded) and similar */
+@media (min-width: 280px) and (max-width: 320px) {
+  .story-container,
+  .philosophy-container,
+  .values-container,
+  .cta-container,
+  .footer-container {
+    padding: 0 12px;
+  }
+
+  /* Ensure content doesn't overflow */
+  * {
+    word-break: break-word;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   20. HORIZONTAL OVERFLOW PREVENTION
+   Prevent any horizontal scrolling
+   Reference: index.html overflow prevention
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Prevent horizontal scrolling on all screen sizes */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers respect viewport width */
+.story-section,
+.philosophy-section,
+.values-section,
+.cta-section,
+footer {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Prevent long words from breaking layout */
+.story-content p,
+.philosophy-header p,
+.philosophy-left p,
+.philosophy-item p,
+.value-card p,
+.cta-section p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure headings don't overflow */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   21. GRID FALLBACK FOR OLDER BROWSERS
+   Flexbox fallback for browsers with limited grid support
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports not (display: grid) {
+  /* Fallback for story grid */
+  .story-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Fallback for philosophy grid */
+  .philosophy-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .philosophy-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* Fallback for values grid */
+  .values-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    flex: 1 1 calc(50% - 1.5rem);
+    min-width: 250px;
+  }
+
+  @media (max-width: 480px) {
+    .value-card {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   22. SAFARI-SPECIFIC FIXES
+   Address Safari rendering issues
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Safari border-radius clipping fix */
+@supports (-webkit-appearance: none) {
+  .story-image,
+  .value-card,
+  .philosophy-item {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Safari flexbox gap fallback */
+@supports not (gap: 1rem) {
+  .values-grid > * {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .values-grid > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .philosophy-right > * {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .philosophy-right > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   23. HIGH DPI / RETINA DISPLAY OPTIMIZATIONS
+   Optimize for high-resolution screens
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Enhance border radius for sharper appearance */
+  .value-card,
+  .philosophy-item,
+  .story-image {
+    border-radius: 12px;
+  }
+
+  /* Slightly thinner borders on retina */
+  .value-card,
+  .philosophy-item {
+    border-width: 0.5px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   24. DARK MODE CONSIDERATIONS (OPTIONAL)
+   Prepare for future dark mode implementation
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (prefers-color-scheme: dark) {
+  /* Note: Uncomment and customize if dark mode is needed */
+  /*
+  .story-section,
+  .philosophy-section,
+  .values-section {
+    background: #1a1a1a;
+  }
+
+  .value-card,
+  .philosophy-item {
+    background: #2a2a2a;
+    border-color: #3a3a3a;
+  }
+
+  h2, h3, h4, p {
+    color: #f0f0f0;
+  }
+  */
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   25. PERFORMANCE OPTIMIZATIONS
+   Hardware acceleration and will-change hints
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  /* Hardware acceleration for smooth animations */
+  .nav-menu,
+  .value-card,
+  .philosophy-item,
+  .story-image img {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Hint browsers about upcoming transforms */
+  .value-card:hover,
+  .philosophy-item:hover {
+    will-change: transform;
+  }
+
+  /* Remove will-change after animation completes */
+  .value-card:not(:hover),
+  .philosophy-item:not(:hover) {
+    will-change: auto;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   26. COOKIE BANNER RESPONSIVE (IF PRESENT)
+   Reference: index.html cookie banner patterns
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 768px) {
+  .cookie-banner {
+    padding: 16px;
+  }
+
+  .cookie-content {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .cookie-text {
+    min-width: 100%;
+  }
+
+  .cookie-accept {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cookie-text p {
+    font-size: 13px;
+  }
+
+  .cookie-accept {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   27. iOS SAFE AREA SUPPORT
+   Handle iPhone notch and home indicator
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  @media (max-width: 768px) {
+    /* Account for notch at top */
+    .therapist-nav {
+      padding-top: max(18px, env(safe-area-inset-top));
+    }
+
+    /* Account for home indicator at bottom */
+    footer {
+      padding-bottom: max(30px, env(safe-area-inset-bottom));
+    }
+
+    .scroll-to-top {
+      bottom: max(20px, calc(env(safe-area-inset-bottom) + 10px));
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   28. CONTAINER QUERIES (FUTURE-PROOFING)
+   Modern responsive design using container queries
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (container-type: inline-size) {
+  .values-section {
+    container-type: inline-size;
+    container-name: values-container;
+  }
+
+  @container values-container (max-width: 768px) {
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @container values-container (min-width: 769px) and (max-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   29. ASPECT RATIO UTILITIES
+   Modern aspect ratio for images
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@supports (aspect-ratio: 1 / 1) {
+  @media (max-width: 768px) {
+    .story-image {
+      aspect-ratio: 4 / 3;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .story-image {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+  }
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   30. FINAL MOBILE OPTIMIZATION CHECKLIST VALIDATION
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 
+   
+   ✓ Mobile navigation: Fixed overlay, slide-in animation, backdrop
+   ✓ Story section: 2-column → 1-column, image height 500px → 300px
+   ✓ Philosophy section: 2-column → 1-column, nested grid 2-col → 1-col
+   ✓ Values section: 4-column → 2-column → 1-column progression
+   ✓ Typography: Proper clamp() scaling from 24px to 64px
+   ✓ Spacing: Reduced on mobile (80px → 48px, etc.)
+   ✓ Touch targets: Minimum 44x44px for all interactive elements
+   ✓ Images: max-width 100%, height auto, proper background sizing
+   ✓ Tested breakpoints: 300px, 360px, 480px, 768px, 1024px, 1440px+
+   ✓ Overflow prevention: word-wrap, overflow-x hidden
+   ✓ Accessibility: Focus states, reduced motion, print styles
+   ✓ Performance: Hardware acceleration, will-change hints
+   
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* END OF ABOUT PAGE RESPONSIVE CSS */

@@ -1,0 +1,88 @@
+# Mind Ease - Therapy Website
+
+A professional, fully-responsive therapy website with interactive booking system.
+
+![Mind Ease Preview](screenshot.png)
+
+## 🌟 Features
+
+- **Multi-page Website**: Home, About, Services, Booking, Privacy Policy, Terms & Conditions
+- **Interactive Booking System**: 4-step wizard with calendar picker and form validation
+- **Smooth Animations**: GSAP-powered transitions and scroll effects
+- **Fully Responsive**: Optimized for desktop, tablet, and mobile devices
+- **Professional Design**: Calming color palette perfect for therapy/wellness brands
+
+## 🛠️ Technologies Used
+
+- **HTML5**: Semantic markup
+- **CSS3**: Custom properties, Flexbox, Grid, animations
+- **JavaScript (ES6+)**: Vanilla JS for interactivity
+- **GSAP 3**: Animation library for smooth transitions
+- **Design**: Custom design system with Playfair Display & Inter fonts
+
+## 📂 Project Structure
+```
+mind-ease/
+├── index.html          # Home page
+├── about.html          # About page
+├── services.html       # Services page
+├── book.html           # Booking wizard
+├── privacy.html        # Privacy policy
+├── terms.html          # Terms & conditions
+└── README.md           # Documentation
+```
+
+## 🎨 Design System
+
+**Colors:**
+- Primary: #3C4A3E (Olive)
+- Secondary: #B8C4B0 (Sage)
+- Accent: #D9B5A7 (Dusty Rose)
+- CTA: #E6D2A3 (Golden)
+
+**Typography:**
+- Headings: Playfair Display
+- Body: Inter
+
+## 🚀 Live Demo
+
+[View Live Site](https://your-demo-url.com)
+
+## 💼 Use Case
+
+This project demonstrates:
+- Complex multi-step form logic
+- Interactive calendar/date picker from scratch
+- GSAP animation integration
+- Responsive design principles
+- Professional UI/UX design
+- Clean, maintainable code structure
+
+## 📱 Responsive Breakpoints
+
+- Desktop: 1200px+
+- Tablet: 768px - 1024px
+- Mobile: 320px - 768px
+
+## 🎯 Key Features Showcase
+
+1. **Booking Wizard**: Custom-built 4-step booking flow with validation
+2. **Animation System**: Scroll-triggered animations, parallax effects
+3. **Form Validation**: Real-time validation with user feedback
+4. **Date Picker**: Interactive calendar excluding weekends
+5. **Design Consistency**: Reusable component system across all pages
+
+## 📧 Contact
+
+**Your Name**
+- Portfolio: [yourportfolio.com](https://yourportfolio.com)
+- LinkedIn: [linkedin.com/in/yourname](https://linkedin.com/in/yourname)
+- Email: your@email.com
+
+## 📄 License
+
+This project is available for portfolio purposes. Please credit if you use any code.
+
+---
+
+**Note**: This is a demonstration project. The booking system logs to console and would need backend integration for production use.

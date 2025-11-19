@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your Mind Ease therapy session - Simple, secure, and confidential appointment scheduling.">
+    <meta name="theme-color" content="#3C4A3E">
+    <title>Book a Session - Mind Ease</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23B8C4B0'/%3E%3Ctext x='50' y='70' font-family='Playfair Display, serif' font-size='60' font-weight='700' fill='%233C4A3E' text-anchor='middle'%3EME%3C/text%3E%3C/svg%3E">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/book.css">
+</head>
+<body>
+    <header id="header" class="therapist-nav">
+        <div class="therapist-container-nav">
+            <div class="brand-container">
+                <a href="index.html" class="brand-link" aria-label="Mind Ease Home">
+                    <div class="brand-logo">ME</div>
+                    <span class="brand-name">Mind Ease</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-list-item">Home</a></li>
+                    <li><a href="about.html" class="nav-list-item">About</a></li>
+                    <li><a href="services.html" class="nav-list-item">Services</a></li>
+                    <li><a href="index.html#testimonials" class="nav-list-item">Testimonials</a></li>
+                    <li><a href="index.html#contact" class="nav-list-item">Contact</a></li>
+                </ul>
+                <a href="book.html" class="nav-book-cta" aria-label="Book a therapy session">Book a Session</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="booking-wrapper">
+        <div class="booking-container">
+            <div class="booking-header">
+                <h1>Book Your Session</h1>
+                <p>Take the first step toward clarity and calm. Select your preferred service, date, and time.</p>
+            </div>
+
+            <div class="booking-wizard">
+                <div class="wizard-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <span class="step-label">Service</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <span class="step-label">Date & Time</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <span class="step-label">Your Details</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <span class="step-label">Confirm</span>
+                    </div>
+                </div>
+
+                <div class="wizard-content">
+                    <div class="wizard-step active" data-step="1">
+                        <h2 class="step-title">Choose Your Service</h2>
+                        <p class="step-description">Select the type of session that resonates with you.</p>
+                        <div class="service-options">
+                            <div class="service-option" data-service="clarity">
+                                <h3>Mind Clarity Session</h3>
+                                <p>A focused space to slow down and discover perspective.</p>
+                                <span class="service-duration">60 minutes</span>
+                            </div>
+                            <div class="service-option" data-service="stress">
+                                <h3>Stress Reset Guidance</h3>
+                                <p>Practical tools to release tension and rebalance.</p>
+                                <span class="service-duration">45 minutes</span>
+                            </div>
+                            <div class="service-option" data-service="emotional">
+                                <h3>Emotional Flow Therapy</h3>
+                                <p>Guided conversation to help you soften and reconnect.</p>
+                                <span class="service-duration">75 minutes</span>
+                            </div>
+                            <div class="service-option" data-service="growth">
+                                <h3>Growth Path Mentorship</h3>
+                                <p>Long-term partnership for sustained self-awareness.</p>
+                                <span class="service-duration">90 minutes</span>
+                            </div>
+                        </div>
+                        <div class="wizard-navigation">
+                            <div></div>
+                            <button class="btn btn-primary" id="step1Next" disabled>Next Step</button>
+                        </div>
+                    </div>
+
+                    <div class="wizard-step" data-step="2">
+                        <h2 class="step-title">Select Date & Time</h2>
+                        <p class="step-description">Choose a convenient date and time for your session.</p>
+                        <div class="date-time-grid">
+                            <div class="calendar-wrapper">
+                                <h4>Available Dates</h4>
+                                <div class="calendar-dates" id="calendarDates"></div>
+                            </div>
+                            <div class="time-slots">
+                                <h4>Available Times</h4>
+                                <div class="time-grid" id="timeSlots">
+                                    <div class="time-slot disabled">Select a date first</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wizard-navigation">
+                            <button class="btn btn-secondary" id="step2Back">Back</button>
+                            <button class="btn btn-primary" id="step2Next" disabled>Next Step</button>
+                        </div>
+                    </div>
+
+                    <div class="wizard-step" data-step="3">
+                        <h2 class="step-title">Your Information</h2>
+                        <p class="step-description">Please provide your contact details so we can confirm your booking.</p>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="message">Any additional notes? (Optional)</label>
+                                <textarea id="message" placeholder="Let us know if you have any specific concerns or preferences..."></textarea>
+                            </div>
+                        </div>
+                        <div class="wizard-navigation">
+                            <button class="btn btn-secondary" id="step3Back">Back</button>
+                            <button class="btn btn-primary" id="step3Next" disabled>Next Step</button>
+                        </div>
+                    </div>
+
+                    <div class="wizard-step" data-step="4">
+                        <h2 class="step-title">Confirm Your Booking</h2>
+                        <p class="step-description">Please review your booking details before confirming.</p>
+                        <div class="confirmation-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">Service</span>
+                                <span class="summary-value" id="summaryService">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Date</span>
+                                <span class="summary-value" id="summaryDate">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Time</span>
+                                <span class="summary-value" id="summaryTime">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Name</span>
+                                <span class="summary-value" id="summaryName">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Email</span>
+                                <span class="summary-value" id="summaryEmail">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Phone</span>
+                                <span class="summary-value" id="summaryPhone">-</span>
+                            </div>
+                        </div>
+                        <div class="wizard-navigation">
+                            <button class="btn btn-secondary" id="step4Back">Back</button>
+                            <button class="btn btn-primary" id="confirmBooking">Confirm Booking</button>
+                        </div>
+                    </div>
+
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h2>Booking Confirmed!</h2>
+                        <p>Thank you for booking with Mind Ease. We've sent a confirmation email to your inbox. We look forward to supporting you on your journey toward clarity and calm.</p>
+                        <a href="index.html" class="btn btn-primary">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mind Ease</h3>
+                    <p>Creating space for healing, understanding, and growth through compassionate, evidence-based therapy.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p>Email: <a href="mailto:hello@mindease.co">hello@mindease.co</a></p>
+                    <p>Phone: <a href="tel:5551234567">(555) 123-4567</a></p>
+                    <p>Hours: Mon-Fri, 9am-7pm</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mind Ease. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Cookie Consent Banner -->
+<div id="cookieBanner" class="cookie-banner">
+    <div class="cookie-content">
+        <div class="cookie-text">
+            <p>We use cookies to enhance your browsing experience and analyze site traffic. By continuing to use this site, you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+        </div>
+        <button onclick="acceptCookies()" class="cookie-accept">Accept</button>
+    </div>
+</div>
+
+
+
+    <script src="assets/js/book.js" defer></script>
+</body>
+</html>
