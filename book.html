@@ -241,6 +241,91 @@
     </footer>
 
 
+<style>
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 30, 30, 0.98);
+    backdrop-filter: blur(10px);
+    color: #FAF9F7;
+    padding: 20px;
+    z-index: 10000;
+    display: none;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.cookie-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.cookie-text p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.cookie-text a {
+    color: #E6D2A3;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.cookie-text a:hover {
+    color: #d4bd8a;
+}
+
+.cookie-accept {
+    background: #3C4A3E;
+    color: #FAF9F7;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.cookie-accept:hover {
+    background: #2F3B33;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(60, 74, 62, 0.3);
+}
+
+@media (max-width: 768px) {
+    .cookie-banner {
+        padding: 16px;
+    }
+    .cookie-content {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .cookie-accept {
+        width: 100%;
+    }
+}
+</style>
     <!-- Cookie Consent Banner -->
 <div id="cookieBanner" class="cookie-banner">
     <div class="cookie-content">
@@ -255,4 +340,5 @@
 
     <script src="assets/js/book.js" defer></script>
 </body>
+
 </html>
